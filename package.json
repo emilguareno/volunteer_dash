@@ -1,0 +1,23 @@
+{
+  "name": "volunteer_dashboard",
+  "version": "1.0.0",
+  "description": "This is a dashboard for non-profits to use with their volunteers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/emilg/volunteer_dashboard.git"
+  },
+  "author": "Emil Guareno <emil@arcticloop.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/emilg/volunteer_dashboard/issues"
+  },
+  "homepage": "https://gitlab.com/emilg/volunteer_dashboard#README",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "express": "^4.13.4"
+  }
+}

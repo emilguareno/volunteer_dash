@@ -1,2 +1,12 @@
-æ­º·¬	©^Ö«Â+a¾‰n×®Èb~Ûi·¥²ÈhºWaj÷­…ë!‰ûa¢êÂ¢Z+±¶¬yÚ'²Ÿµ«ÚŠV›ŠX­ÈfŠp^·jwXzYhÂ'ç¢×(š™^µæÚ±çh0†‹•«-š)îµë!‰ûb°jŞzxŸ¶¬†'íŠÇ(š™^µåh–éíyêìÂ)e¢yr±ç­…è«²Ÿ¶Æ§vz(ç¥±ë†'í².•ØZ½æœ¶*'²Ëœ…«yçR†'í
-‹Ş­ç@uÓhµë†'í°ÚŠV›•à%–Èb~Û)‰Évêl†‹¥u·š¦šè½ç[É+Z}û^je,z»!¢é]­çŠ÷™¨¥Â§uç"²*'…«yéæi×’zWœµ«&j|¬†'í±«2¢ì(ºWeŠG’†‹¥u·œ¢Z+yÖò†Œ!¢ßåjËfŠ{­zÈb~Ø¬ëpyéÑyÖ§tjŞz
+# Features:
+- Calendar with volunteer shifts
+  - Labels should have the shift hour
+  - Colors based on shift availability (Admin)
+    - Between Red and Yellow if not complete, based on how â€œhot/last minuteâ€ shift is.
+    - Green if the shift is complete. 
+  - Volunteers will only see their shifts and no one else's.
+  - Shift should have actions such as Need Shift Covered, Add Notes.
+- Shifts Available
+  - All shifts picked up should be approved by Staff team. User should receive email when decision has been made.
+  - Select as many shifts as you would like.
+  - Should be colored by how â€œhot/last minuteâ€ shift is. Between Red and Green.

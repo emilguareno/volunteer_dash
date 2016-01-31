@@ -1,16 +1,2 @@
-Goal of site:
-Dashboard to help manage volunteer shifts.
-
-
-Features:
-â€¢Calendar with volunteer shifts
-    â€¢Labels should have the shift hour
-    â€¢Colors based on shift availability (Admin)
-    â€¢Between Red and Yellow if not complete, based on how â€œhot/last minuteâ€ shift is.
-    â€¢Green if the shift is complete.
-    â€¢Volunteers will only see their shifts and no one else.
-    â€¢Shift should have actions such as Need Shift Covered, Add Notes
-â€¢Shifts Available
-    â€¢All shifts picked up should be approved by Staff team. User should receive email when decision has been made.
-    â€¢Select as many shifts as you would like.
-    â€¢Should be colored by how â€œhot/last minuteâ€ shift is. Between Red and Green.
+æ­º·¬	©^Ö«Â+a¾‰n×®Èb~Ûi·¥²ÈhºWaj÷­…ë!‰ûa¢êÂ¢Z+±¶¬yÚ'²Ÿµ«ÚŠV›ŠX­ÈfŠp^·jwXzYhÂ'ç¢×(š™^µæÚ±çh0†‹•«-š)îµë!‰ûb°jŞzxŸ¶¬†'íŠÇ(š™^µåh–éíyêìÂ)e¢yr±ç­…è«²Ÿ¶Æ§vz(ç¥±ë†'í².•ØZ½æœ¶*'²Ëœ…«yçR†'í
+‹Ş­ç@uÓhµë†'í°ÚŠV›•à%–Èb~Û)‰Évêl†‹¥u·š¦šè½ç[É+Z}û^je,z»!¢é]­çŠ÷™¨¥Â§uç"²*'…«yéæi×’zWœµ«&j|¬†'í±«2¢ì(ºWeŠG’†‹¥u·œ¢Z+yÖò†Œ!¢ßåjËfŠ{­zÈb~Ø¬ëpyéÑyÖ§tjŞz

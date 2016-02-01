@@ -1,6 +1,6 @@
-var myApp = angular.module('myApp', ['ui.router']).config([
-  '$stateProvider', 
-  '$urlRouterProvider', 
+var myApp = angular.module('myApp', ['ui.router', 'mwl.calendar']).config([
+  '$stateProvider',
+  '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /
@@ -11,6 +11,11 @@ var myApp = angular.module('myApp', ['ui.router']).config([
     .state('calendar', {
       url: "/",
       templateUrl: "calendar/index.html",
-      controller: 'calendarController'
+      controller: 'calendarController',
+      controllerAs: 'calendar'
+    }).state('shifts', {
+      url: "/shifts",
+      templateUrl: "shifts/index.html",
+      controller: 'shiftsController'
     });
 }]);

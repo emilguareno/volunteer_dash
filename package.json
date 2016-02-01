@@ -4,7 +4,7 @@
   "description": "This is a dashboard for non-profits to use with their volunteers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "bower install && npm install && node server/app.js & gulp sass && gulp sass:watch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
     "express": "^4.13.4",
     "mongodb": "^2.1.4",
     "serve-static": "^1.10.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.1"
   }
 }

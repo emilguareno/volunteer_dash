@@ -1,1 +1,6 @@
-<h1>Welcome to the calendar! {{todayDate | date:'medium'}}</h1>
+<h1>{{todayDate}}</h1>
+<mwl-calendar
+    view="calendar.calendarView"
+    view-date="calendar.calendarDate"
+    events="calendar.events">
+</mwl-calendar>

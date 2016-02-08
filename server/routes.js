@@ -1,10 +1,10 @@
-module.exports = function(app, passport) {
+module.exports = function(app, passport, serveStatic) {
 
   // =====================================
   // HOME PAGE (with login links) ========
   // =====================================
-  app.get('/', function(req, res) {
-    res.render('index.ejs'); // load the index.ejs file
+  app.get('/', isLoggedIn, function(req, res) {
+    res.redirect('/dashboard');
   });
 
   // =====================================
@@ -21,7 +21,7 @@ module.exports = function(app, passport) {
 
   // process the login form
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/dashboard', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
@@ -40,7 +40,7 @@ module.exports = function(app, passport) {
 
   // process the signup form
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/dashboard', // redirect to the secure profile section
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
@@ -57,6 +57,13 @@ module.exports = function(app, passport) {
   });
 
   // =====================================
+  // DASHBOARD SECTION =====================
+  // =====================================
+  // we will want this protected so you have to be logged in to visit
+  // we will use route middleware to verify this (the isLoggedIn function)
+  app.use('/dashboard', isLoggedIn, serveStatic(__dirname + '/../app'));
+
+  // =====================================
   // FACEBOOK ROUTES =====================
   // =====================================
   // route for facebook authentication and login
@@ -67,7 +74,7 @@ module.exports = function(app, passport) {
   // handle the callback after facebook has authenticated the user
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }));
 
@@ -80,7 +87,7 @@ module.exports = function(app, passport) {
   // handle the callback after twitter has authenticated the user
   app.get('/auth/twitter/callback',
     passport.authenticate('twitter', {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }));
 
@@ -103,7 +110,7 @@ module.exports = function(app, passport) {
     });
   });
   app.post('/connect/local', passport.authenticate('local-signup', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/dashboard', // redirect to the secure profile section
     failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
@@ -118,7 +125,7 @@ module.exports = function(app, passport) {
   // handle the callback after facebook has authorized the user
   app.get('/connect/facebook/callback',
     passport.authorize('facebook', {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }));
 
@@ -132,7 +139,7 @@ module.exports = function(app, passport) {
   // handle the callback after twitter has authorized the user
   app.get('/connect/twitter/callback',
     passport.authorize('twitter', {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }));
 
@@ -180,5 +187,5 @@ function isLoggedIn(req, res, next) {
     return next();
 
   // if they aren't redirect them to the home page
-  res.redirect('/');
+  res.render('index.ejs'); // load the index.ejs file
 }

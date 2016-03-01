@@ -61,7 +61,7 @@ module.exports = function(app, passport, serveStatic) {
   // =====================================
   // we will want this protected so you have to be logged in to visit
   // we will use route middleware to verify this (the isLoggedIn function)
-  app.use('/dashboard', isLoggedIn, serveStatic(__dirname + '/../app'));
+  app.use('/dashboard', isLoggedIn, serveStatic(__dirname + '/../../app'));
 
   // =====================================
   // FACEBOOK ROUTES =====================

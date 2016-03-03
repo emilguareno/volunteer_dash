@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.router', 'mwl.calendar']).config([
+var myApp = angular.module('myApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngTagsInput']).config([
   '$stateProvider',
   '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {

@@ -1,11 +1,26 @@
 <form class="" ng-submit="createShift(shift)">
-  <label for="name">Name: </label>
-  <input id="name" type="text" ng-model="shift.name" value="">
-  <label for="start-date">Start Date: </label>
-  <input id="start-date" type="text" ng-model="shift.startDate" value="">
-  <label for="end-date">End Date: </label>
-  <input id="end-date" type="text" ng-model="shift.endDate" value="">
-  <label for="volunteers">Volunteers: </label>
-  <input id="volunteers" type="text" ng-model="shift.volunteers" value="56b821a7a74873b41276bae0">
-  <input type="submit" value="Submit">
+  <div class="form-group">
+    <label for="name">Name: </label>
+    <input id="name" type="text" class="form-control" placeholder="Morning" ng-model="shift.name" value="">
+  </div>
+  <div class="form-group">
+    <label for="start-date">Start Date: </label>
+    <input id="start-date" type="text" class="form-control" placeholder="3/1/2016 8:00am" ng-model="shift.startDate" value="">
+  </div>
+  <div class="form-group">
+    <label for="end-date">End Date: </label>
+    <input id="end-date" type="text" class="form-control" placeholder="3/1/2016 11:00am" ng-model="shift.endDate" value="">
+  </div>
+  <div class="form-group">
+    <label for="volunteers">Volunteers: </label>
+    <tags-input ng-model="volunteers" 
+    display-property="name" 
+    key-property="id" 
+    on-tag-added="tagAdded($tag)"
+    replace-spaces-with-dashes="false">
+      <auto-complete source="filteredTagsAutoComplete($query)"></auto-complete>
+    </tags-input>
+    <!-- <input id="volunteers" type="text" class="form-control" placeholder="Emil Guareno, Wendy Peralta" ng-model="shift.volunteers" value="56b821a7a74873b41276bae0"> -->
+  </div>
+  <input type="submit" class="btn btn-default" value="Submit">
 </form>

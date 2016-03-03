@@ -1,4 +1,4 @@
-myApp.service('shiftsService', ['$http', '$q', function($http, $q){
+myApp.service('shiftService', ['$http', '$q', function($http, $q){
   this.getAllShifts = function(){
     var deferred = $q.defer();
     $http.get('/api/shifts').then(function(shifts){

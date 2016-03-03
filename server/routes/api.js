@@ -2,11 +2,22 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Shifts = require('../models/shifts');
+var Users = require('../models/user');
 
 router.get('/shifts', function(req, res){
   Shifts.find({}).populate('volunteers').exec(function(err, shifts){
     if(!err){
       return res.send(shifts);
+    } else {
+      return res.send(500, err);
+    }
+  });
+});
+
+router.get('/users', function(req, res){
+  Users.find(function(err, users){
+    if(!err){
+      return res.send(users);
     } else {
       return res.send(500, err);
     }

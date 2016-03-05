@@ -14,8 +14,8 @@ myApp.controller('shiftsController', ['$scope', 'shiftService', 'userService', '
   };
   var coeff = 1000 * 60 * 5;
   var date = new Date(); //or use any other date
-  $scope.shift.startDate = new Date(Math.round(date.getTime() / coeff) * coeff);
-  $scope.shift.endDate = moment($scope.shift.startDate).add(3, 'hours').toDate();
+  $scope.shift.startsAt = new Date(Math.round(date.getTime() / coeff) * coeff);
+  $scope.shift.endsAt = moment($scope.shift.startsAt).add(3, 'hours').toDate();
   $scope.createShift = function(shift) {
     shift.volunteers = shift.volunteerNames.map(function(obj) {
       return obj.id;

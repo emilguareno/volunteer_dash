@@ -27,8 +27,8 @@ router.get('/users', function(req, res){
 router.post('/shifts/add', function(req, res){
   var shift = new Shifts({
     name: req.body.name,
-    startDate: new Date(req.body.startDate),
-    endDate: new Date(req.body.endDate),
+    startsAt: new Date(req.body.startsAt),
+    endsAt: new Date(req.body.endsAt),
     volunteers: req.body.volunteers
   });
   

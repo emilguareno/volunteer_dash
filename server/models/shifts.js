@@ -4,8 +4,8 @@ ObjectId = Schema.ObjectId;
 
 var ShiftSchema = new Schema({
   name: String,
-  startDate: Date,
-  endDate: Date,
+  startsAt: Date,
+  endsAt: Date,
   volunteers: [{
     type: ObjectId,
     ref: 'User'

@@ -7,7 +7,8 @@ var myApp = angular.module('myApp', [
 ]).config([
   '$stateProvider',
   '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider) {
+  'calendarConfig',
+  function($stateProvider, $urlRouterProvider, calendarConfig) {
     //
     // For any unmatched url, redirect to /
     $urlRouterProvider.otherwise("/");
@@ -24,5 +25,8 @@ var myApp = angular.module('myApp', [
         templateUrl: "shifts/index.html",
         controller: 'shiftsController'
       });
+      
+      calendarConfig.dateFormatter = 'moment';
+      calendarConfig.allDateFormats.moment.date.time = 'hh:mm A';
   }
 ]);

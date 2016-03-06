@@ -1,3 +1,43 @@
+<script id="customMonthCell.html" type="text/ng-template">
+  <div
+    ng-class="{
+      'cal-day-outmonth': !day.inMonth,
+      'cal-day-inmonth': day.inMonth,
+      'cal-day-weekend': day.isWeekend,
+      'cal-day-past': day.isPast,
+      'cal-day-today': day.isToday,
+      'cal-day-future': day.isFuture
+    }">
+    <small
+      class="cal-events-num badge badge-important pull-left"
+      ng-show="day.badgeTotal > 0"
+      ng-bind="day.badgeTotal">
+    </small>
+
+    <span
+      class="pull-right"
+      data-cal-date
+      ng-click="vm.calendarCtrl.dateClicked(day.date)"
+      ng-bind="day.label">
+    </span>
+
+    <div class="events-list" ng-show="day.events.length > 0">
+      <a
+        ng-repeat="event in day.events | orderBy:'startsAt' track by event.$id"
+        href="javascript:;"
+        ng-click="vm.onEventClick({calendarEvent: event})"
+        class="event"
+        ng-class="'event-' + event.type + ' ' + event.cssClass"
+        ng-mouseenter="vm.highlightEvent(event, true)"
+        ng-mouseleave="vm.highlightEvent(event, false)"
+        tooltip-append-to-body="true"
+        uib-tooltip-html="((event.startsAt | calendarDate:'time':true) + (vm.calendarConfig.displayEventEndTimes && event.endsAt ? ' - ' + (event.endsAt | calendarDate:'time':true) : '') + ' - ' + event.title) | calendarTrustAsHtml"
+        mwl-draggable="event.draggable === true"
+        drop-data="{event: event, draggedFromDate: day.date.toDate()}">
+      </a>
+    </div>
+  </div>
+</script>
 <h2 class="text-center">{{ calendar.calendarTitle }}</h2>
 <div class="row">
   <div class="col-md-6 text-center">
@@ -28,5 +68,6 @@ view="calendar.calendarView"
 view-date="calendar.calendarDate"
 view-title="calendar.calendarTitle"
 events="calendar.events"
-on-event-click="calendar.eventClicked(calendarEvent)"
+on-event-click="calendar.eventClicked(calendarEvent)" 
+slide-box-disabled="true"
 ></mwl-calendar>

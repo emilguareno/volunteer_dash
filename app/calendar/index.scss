@@ -1,0 +1,24 @@
+mwl-calendar {
+  .cal-day-today{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .events-list {
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+  }
+  .event {
+    box-shadow: none;
+    border: none;
+    float: none;
+    display: inline-block;
+  }
+  .event-success{
+    background-color: #05BB02;
+  }
+  .event-important{
+    background-color: #CE1717;
+  }
+}

@@ -26,10 +26,11 @@ router.get('/users', function(req, res){
 
 router.post('/shifts/add', function(req, res){
   var shift = new Shifts({
-    name: req.body.name,
+    title: req.body.title,
     startsAt: new Date(req.body.startsAt),
     endsAt: new Date(req.body.endsAt),
-    volunteers: req.body.volunteers
+    volunteers: req.body.volunteers,
+    volunteersNeeded: req.body.volunteersNeeded
   });
   
   shift.save(function(err){

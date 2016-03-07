@@ -1,4 +1,5 @@
 var express = require('express');
+var compress = require('compression');
 var serveStatic = require('serve-static');
 var app = express();
 var mongoose = require('mongoose');
@@ -16,6 +17,7 @@ mongoose.connect(configDB.url); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
+app.use(compress()); 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms

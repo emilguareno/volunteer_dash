@@ -4,10 +4,12 @@
   </div>
   <div class="modal-body">
     <uib-progressbar class="progress-striped active" max="shift.volunteersNeeded" value="shift.volunteers.length" type="{{type}}">
-      <i>{{shift.volunteers.length}}
-        /
-        {{shift.volunteersNeeded}}
-        volunteers filled</i>
+      <strong>
+        <i>{{shift.volunteers.length}}
+          /
+          {{shift.volunteersNeeded}}
+          volunteers filled</i>
+      </strong>
     </uib-progressbar>
     <ul class="volunteers">
       <li ng-repeat="volunteer in shift.volunteers">

@@ -6,6 +6,15 @@ var Users = require('../models/user');
 
 router.get('/shifts', function(req, res){
   Shifts.find({}).populate('volunteers').exec(function(err, shifts){
+    shifts = shifts.map(function(shift){
+      shift.volunteers = shift.volunteers.map(function(volunteer){
+        if(volunteer._id.toString() === req.user._id.toString()){
+          volunteer.isMe = true;
+        }
+        return volunteer;
+      });
+      return shift;
+    });
     if(!err){
       return res.send(shifts);
     } else {

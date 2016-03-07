@@ -2,10 +2,9 @@ myApp.service('calendarService', ['$http', 'shiftService', function($http, shift
   var formatData = function(shifts) {
     return shifts.map(function(shift) {
       shift.type = function() {
-        var percent = shift.volunteers.length / shift.volunteersNeeded * 100;
-        if (percent === 100) {
+        if (shift.percent === 100) {
           return 'success';
-        } else if (percent >= 50) {
+        } else if (shift.percent >= 50) {
           return 'warning';
         } else {
           return 'important';

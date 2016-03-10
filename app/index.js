@@ -3,7 +3,8 @@ var myApp = angular.module('myApp', [
   'mwl.calendar',
   'ui.bootstrap',
   'ui.bootstrap.datetimepicker',
-  'ngTagsInput'
+  'ngTagsInput',
+  'ui-notification'
 ]).config([
   '$stateProvider',
   '$urlRouterProvider',

@@ -24,7 +24,8 @@
     "angular-bootstrap-calendar": "latest",
     "angular-bootstrap": "^1.2.1",
     "ng-tags-input": "3.0.0",
-    "angular-ui-bootstrap-datetimepicker": "^0.14.4",
-    "angular-moment": "^0.10.3"
+    "angular-ui-bootstrap-datetimepicker": "latest",
+    "angular-moment": "^0.10.3",
+    "angular-ui-notification": "^0.1.0"
   }
 }

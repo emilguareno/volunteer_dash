@@ -1,4 +1,10 @@
-myApp.controller('shiftsController', ['$scope', 'shiftService', 'userService', '$filter', '$q', function($scope, shiftService, userService, $filter, $q) {
+myApp.controller('shiftsController', ['$scope', 
+'shiftService', 
+'userService', 
+'$filter', 
+'$q', 
+'Notification',
+function($scope, shiftService, userService, $filter, $q, Notification) {
   $scope.volunteers = [];
   $scope.shift = {};
   $scope.popup = {};
@@ -23,7 +29,7 @@ myApp.controller('shiftsController', ['$scope', 'shiftService', 'userService', '
       return obj.id;
     });
     shiftService.createShift(shift).then(function(response) {
-      console.log(response);
+      Notification.success('Shift has been added!');
     });
   };
 }]);

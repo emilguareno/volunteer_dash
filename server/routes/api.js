@@ -3,18 +3,14 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Shifts = require('../models/shifts');
 var Users = require('../models/user');
+var auth = require('../auth/auth.service.js');
+
+router.get('/me', function(req, res){
+  res.send(req.user);
+});
 
 router.get('/shifts', function(req, res){
-  Shifts.find({}).populate('volunteers').exec(function(err, shifts){
-    shifts = shifts.map(function(shift){
-      shift.volunteers = shift.volunteers.map(function(volunteer){
-        if(volunteer._id.toString() === req.user._id.toString()){
-          volunteer.isMe = true;
-        }
-        return volunteer;
-      });
-      return shift;
-    });
+  Shifts.find({}).populate('volunteers', '-local.password -twitter.token -facebook.token').exec(function(err, shifts){
     if(!err){
       return res.send(shifts);
     } else {
@@ -33,7 +29,7 @@ router.get('/users', function(req, res){
   });
 });
 
-router.post('/shifts/add', function(req, res){
+router.post('/shifts/add', auth.hasRole('admin'), function(req, res){
   var shift = new Shifts({
     title: req.body.title,
     startsAt: new Date(req.body.startsAt),

@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var configDB = require('./config/database.js');
 var api = require('./routes/api.js');
+var auth = require('./auth/auth.service.js');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
@@ -35,10 +36,9 @@ app.set('views', __dirname + '/views');
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 // routes ======================================================================
 require('./routes/auth.js')(app, passport, serveStatic); // load our routes and pass in our app and fully configured passport
-app.use('/api', api);
+app.use('/api', auth.isLoggedIn, api);
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!');
 });

@@ -1,4 +1,10 @@
 myApp.service('userService', ['$http', '$q', function($http, $q) {
+  //TODO get current user on app init
+  $http.get('/api/me').then(function(me){
+    this.currentUser = me.data;
+    this.isAdmin = this.currentUser.role === 'admin';
+  });
+  
   this.getAllUsers = function() {
     var deferred = $q.defer();
     $http.get('/api/users').then(function(users) {

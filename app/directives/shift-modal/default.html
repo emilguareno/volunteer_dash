@@ -6,14 +6,14 @@
     <uib-progressbar class="progress-striped active" max="shift.volunteersNeeded" value="shift.volunteers.length" type="{{type}}">
       <strong>
         <i>{{shift.volunteers.length}}
-          /
+          out of 
           {{shift.volunteersNeeded}}
           volunteers filled</i>
       </strong>
     </uib-progressbar>
     <ul class="volunteers">
       <li ng-repeat="volunteer in shift.volunteers">
-        <span>{{volunteer.name}}</span>
+        <span>{{volunteer[volunteer.method].name}}</span>
         <div ng-if="volunteer.isMe" class="btn-group" uib-dropdown>
           <button id="split-button" type="button" class="btn btn-primary">Actions</button>
           <button type="button" class="btn btn-primary" uib-dropdown-toggle>

@@ -173,6 +173,7 @@ module.exports = function(passport) {
                   return done(null, user);
                 });
               }
+              console.log(user.role);
               return done(null, user); // user found, return that user
             } else {
               // if there is no user found with that facebook id, create them

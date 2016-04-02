@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', [
+angular.module('myApp', [
   'ui.router',
   'mwl.calendar',
   'ui.bootstrap',
@@ -19,15 +19,16 @@ var myApp = angular.module('myApp', [
       .state('calendar', {
         url: "/",
         templateUrl: "calendar/index.html",
-        controller: 'calendarController',
-        controllerAs: 'calendar'
+        controller: 'CalendarController',
+        controllerAs: 'vm'
       }).state('shifts', {
         url: "/shifts",
         templateUrl: "shifts/index.html",
-        controller: 'shiftsController'
+        controller: 'ShiftsController',
+        controllerAs: 'vm'
       });
-      
-      calendarConfig.dateFormatter = 'moment';
-      calendarConfig.allDateFormats.moment.date.time = 'hh:mm A';
+
+    calendarConfig.dateFormatter = 'moment';
+    calendarConfig.allDateFormats.moment.date.time = 'hh:mm A';
   }
 ]);

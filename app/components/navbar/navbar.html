@@ -1,26 +1,26 @@
-<div class="navbar navbar-inverted navbar-static-top fixed" ng-class="{fixed: addFixHeader}" ng-controller="NavbarCtrl">
+<div class="navbar navbar-inverted navbar-static-top fixed" ng-class="{fixed: addFixHeader}" ng-controller="NavbarCtrl as vm">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+      <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
     </div>
-    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    <div collapse="vm.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ui-sref-active="active">
+        <li ng-repeat="item in vm.menu" ui-sref-active="active">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
-        <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
+        <!-- <li ng-show="isAdmin()" ng-class="{active: vm.isActive('/admin')}"><a href="/admin">Admin</a></li>
         <li><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>
-        <li ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li> -->
+        <li ng-class="{active: vm.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li> -->
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <!-- <li><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li> -->
-        <li ng-class="{active: isActive('/settings')}"><a ui-sref="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-class="{active: vm.isActive('/settings')}"><a ui-sref="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>

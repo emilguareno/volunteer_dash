@@ -1,18 +1,18 @@
 <script type="text/ng-template" id="shiftModalContent.html">
   <div class="modal-header">
-    <h3 class="modal-title">{{shift.title}}</h3>
+    <h3 class="modal-title">{{vm.shift.title}}</h3>
   </div>
   <div class="modal-body">
-    <uib-progressbar class="progress-striped active" max="shift.volunteersNeeded" value="shift.volunteers.length" type="{{type}}">
+    <uib-progressbar class="progress-striped active" max="vm.shift.volunteersNeeded" value="vm.shift.volunteers.length" type="{{vm.type}}">
       <strong>
-        <i>{{shift.volunteers.length}}
+        <i>{{vm.shift.volunteers.length}}
           out of 
-          {{shift.volunteersNeeded}}
+          {{vm.shift.volunteersNeeded}}
           volunteers filled</i>
       </strong>
     </uib-progressbar>
     <ul class="volunteers">
-      <li ng-repeat="volunteer in shift.volunteers">
+      <li ng-repeat="volunteer in vm.shift.volunteers">
         <span>{{volunteer[volunteer.method].name}}</span>
         <div ng-if="volunteer.isMe" class="btn-group" uib-dropdown>
           <button id="split-button" type="button" class="btn btn-primary">Actions</button>
@@ -29,7 +29,7 @@
     </ul>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
   </div>
 </script>

@@ -40,17 +40,17 @@
     </div>
   </div>
 </script>
-<h2 class="text-center">{{ calendar.calendarTitle }}</h2>
+<h2 class="text-center">{{ vm.calendarTitle }}</h2>
 <div class="row">
   <div class="col-md-6 text-center">
     <div class="btn-group">
-      <button class="btn btn-primary" mwl-date-modifier date="calendar.calendarDate" decrement="calendar.calendarView">
+      <button class="btn btn-primary" mwl-date-modifier date="vm.calendarDate" decrement="vm.calendarView">
         Previous
       </button>
-      <button class="btn btn-default" mwl-date-modifier date="calendar.calendarDate" set-to-today>
+      <button class="btn btn-default" mwl-date-modifier date="vm.calendarDate" set-to-today>
         Today
       </button>
-      <button class="btn btn-primary" mwl-date-modifier date="calendar.calendarDate" increment="calendar.calendarView">
+      <button class="btn btn-primary" mwl-date-modifier date="vm.calendarDate" increment="vm.calendarView">
         Next
       </button>
     </div>
@@ -58,18 +58,18 @@
 
   <div class="col-md-6 text-center">
     <div class="btn-group">
-      <label class="btn btn-primary" ng-model="calendar.calendarView" uib-btn-radio="'year'">Year</label>
-      <label class="btn btn-primary" ng-model="calendar.calendarView" uib-btn-radio="'month'">Month</label>
-      <label class="btn btn-primary" ng-model="calendar.calendarView" uib-btn-radio="'week'">Week</label>
-      <label class="btn btn-primary" ng-model="calendar.calendarView" uib-btn-radio="'day'">Day</label>
+      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'">Year</label>
+      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'">Month</label>
+      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'">Week</label>
+      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'">Day</label>
     </div>
   </div>
 </div>
 <mwl-calendar 
-view="calendar.calendarView" 
-view-date="calendar.calendarDate"
-view-title="calendar.calendarTitle"
-events="calendar.events"
-on-event-click="calendar.eventClicked(calendarEvent)" 
+view="vm.calendarView" 
+view-date="vm.calendarDate"
+view-title="vm.calendarTitle"
+events="vm.events"
+on-event-click="vm.eventClicked(calendarEvent)" 
 slide-box-disabled="true"
 ></mwl-calendar>

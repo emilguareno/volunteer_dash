@@ -1,18 +1,25 @@
-myApp.controller('NavbarCtrl', function($scope, $location, $window) {
+(function() {
   'use strict';
-  $scope.menu = [{
-    'title': 'Home',
-    'state': 'calendar'
-  }, {
-    'title': 'Shifts',
-    'state': 'shifts'
-  }];
+  angular.module('myApp').controller('NavbarCtrl', NavbarCtrl);
 
-  $scope.isCollapsed = true;
-  // $scope.isAdmin = Auth.isAdmin;
-  // $scope.getCurrentUser = Auth.getCurrentUser;
+  NavbarCtrl.$inject = ['$scope', '$location', '$window'];
 
-  $scope.isActive = function(route) {
-    return route === $location.path();
-  };
-});
+  function NavbarCtrl($scope, $location, $window) {
+    var vm = this;
+    vm.menu = [{
+      'title': 'Home',
+      'state': 'calendar'
+    }, {
+      'title': 'Shifts',
+      'state': 'shifts'
+    }];
+
+    vm.isCollapsed = true;
+    // vm.isAdmin = Auth.isAdmin;
+    // vm.getCurrentUser = Auth.getCurrentUser;
+
+    vm.isActive = function(route) {
+      return route === $location.path();
+    };
+  }
+})();

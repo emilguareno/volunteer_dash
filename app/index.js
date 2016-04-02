@@ -1,21 +1,34 @@
-var myApp = angular.module('myApp', ['ui.router', 'mwl.calendar']).config([
+angular.module('myApp', [
+  'ui.router',
+  'mwl.calendar',
+  'ui.bootstrap',
+  'ui.bootstrap.datetimepicker',
+  'ngTagsInput',
+  'ui-notification'
+]).config([
   '$stateProvider',
   '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider) {
-  //
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise("/");
-  //
-  // Now set up the states
-  $stateProvider
-    .state('calendar', {
-      url: "/",
-      templateUrl: "calendar/index.html",
-      controller: 'calendarController',
-      controllerAs: 'calendar'
-    }).state('shifts', {
-      url: "/shifts",
-      templateUrl: "shifts/index.html",
-      controller: 'shiftsController'
-    });
-}]);
+  'calendarConfig',
+  function($stateProvider, $urlRouterProvider, calendarConfig) {
+    //
+    // For any unmatched url, redirect to /
+    $urlRouterProvider.otherwise("/");
+    //
+    // Now set up the states
+    $stateProvider
+      .state('calendar', {
+        url: "/",
+        templateUrl: "calendar/index.html",
+        controller: 'CalendarController',
+        controllerAs: 'vm'
+      }).state('shifts', {
+        url: "/shifts",
+        templateUrl: "shifts/index.html",
+        controller: 'ShiftsController',
+        controllerAs: 'vm'
+      });
+
+    calendarConfig.dateFormatter = 'moment';
+    calendarConfig.allDateFormats.moment.date.time = 'hh:mm A';
+  }
+]);

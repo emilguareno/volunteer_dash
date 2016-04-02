@@ -73,7 +73,8 @@ module.exports = function(passport) {
           else {
             // create the user
             var newUser = new User();
-
+            newUser.method = 'local';
+            newUser.local.name = req.body.name;
             newUser.local.email = email;
             newUser.local.password = newUser.generateHash(password);
 
@@ -161,6 +162,7 @@ module.exports = function(passport) {
               // if there is a user id already but no token (user was linked at one point and then removed)
               // just add our token and profile information
               if (!user.facebook.token) {
+                user.method = 'facebook';
                 user.facebook.token = token;
                 user.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
                 user.facebook.email = profile.emails[0].value;
@@ -171,12 +173,14 @@ module.exports = function(passport) {
                   return done(null, user);
                 });
               }
+              console.log(user.role);
               return done(null, user); // user found, return that user
             } else {
               // if there is no user found with that facebook id, create them
               var newUser = new User();
 
               // set all of the facebook information in our user model
+              newUser.method = 'facebook';
               newUser.facebook.id = profile.id; // set the users facebook id                   
               newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
               newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
@@ -198,6 +202,7 @@ module.exports = function(passport) {
           var user = req.user; // pull the user out of the session
 
           // update the current users facebook credentials
+          user.method = 'facebook';
           user.facebook.id = profile.id;
           user.facebook.token = token;
           user.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
@@ -242,9 +247,10 @@ module.exports = function(passport) {
             if (user) {
               // if there is a user id already but no token (user was linked at one point and then removed)
               if (!user.twitter.token) {
+                user.method = 'twitter';
                 user.twitter.token = token;
                 user.twitter.username = profile.username;
-                user.twitter.displayName = profile.displayName;
+                user.twitter.name = profile.displayName;
 
                 user.save(function(err) {
                   if (err)
@@ -258,10 +264,11 @@ module.exports = function(passport) {
               // if there is no user, create them
               var newUser = new User();
 
+              newUser.method = 'twitter';
               newUser.twitter.id = profile.id;
               newUser.twitter.token = token;
               newUser.twitter.username = profile.username;
-              newUser.twitter.displayName = profile.displayName;
+              newUser.twitter.name = profile.displayName;
 
               newUser.save(function(err) {
                 if (err)
@@ -274,11 +281,12 @@ module.exports = function(passport) {
         } else {
           // user already exists and is logged in, we have to link accounts
           var user = req.user; // pull the user out of the session
-
+          
+          user.method = 'twitter';
           user.twitter.id = profile.id;
           user.twitter.token = token;
           user.twitter.username = profile.username;
-          user.twitter.displayName = profile.displayName;
+          user.twitter.name = profile.displayName;
 
           user.save(function(err) {
             if (err)

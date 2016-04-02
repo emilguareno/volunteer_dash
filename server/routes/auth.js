@@ -1,9 +1,10 @@
-module.exports = function(app, passport, serveStatic) {
+var auth = require('../auth/auth.service.js');
 
+module.exports = function(app, passport, serveStatic) {
   // =====================================
   // HOME PAGE (with login links) ========
   // =====================================
-  app.get('/', isLoggedIn, function(req, res) {
+  app.get('/', auth.isLoggedIn, function(req, res) {
     res.redirect('/dashboard');
   });
 
@@ -50,7 +51,7 @@ module.exports = function(app, passport, serveStatic) {
   // =====================================
   // we will want this protected so you have to be logged in to visit
   // we will use route middleware to verify this (the isLoggedIn function)
-  app.get('/profile', isLoggedIn, function(req, res) {
+  app.get('/profile', auth.isLoggedIn, function(req, res) {
     res.render('profile.ejs', {
       user: req.user // get the user out of session and pass to template
     });
@@ -61,7 +62,7 @@ module.exports = function(app, passport, serveStatic) {
   // =====================================
   // we will want this protected so you have to be logged in to visit
   // we will use route middleware to verify this (the isLoggedIn function)
-  app.use('/dashboard', isLoggedIn, serveStatic(__dirname + '/../app'));
+  app.use('/dashboard', auth.isLoggedIn, serveStatic(__dirname + '/../../app'));
 
   // =====================================
   // FACEBOOK ROUTES =====================
@@ -178,14 +179,3 @@ module.exports = function(app, passport, serveStatic) {
     });
   });
 };
-
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-
-  // if user is authenticated in the session, carry on 
-  if (req.isAuthenticated())
-    return next();
-
-  // if they aren't redirect them to the home page
-  res.render('index.ejs'); // load the index.ejs file
-}
